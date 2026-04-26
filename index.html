@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>别人眼里的你，到底是哪种人？｜禾沐风格测试</title>
+<meta name="description" content="从 6 个现实维度（能量、节奏、判断、焦点、关系、变化）分析你的风格、优势、雷区和适合方向。"/>
+<style>
+:root{--bg:#f7f7f4;--paper:#ffffff;--ink:#111111;--muted:#6b6b6b;--line:#dddddd;--soft:#eeeeea;--accent:#175cff;--accent2:#f2f6ff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;background:var(--bg);color:var(--ink);min-height:100vh}
+.wrap{max-width:880px;margin:0 auto;padding:18px 14px 42px}.hero{padding:30px 20px;border:1px solid var(--line);border-radius:26px;background:var(--paper);box-shadow:none;overflow:hidden;position:relative}.badge{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--ink);border-radius:999px;padding:8px 12px;color:var(--ink);background:var(--paper);font-size:13px;font-weight:800}.title{font-size:36px;line-height:1.06;margin:20px 0 12px;font-weight:950;letter-spacing:-1px}.sub{color:var(--muted);line-height:1.75;font-size:16px}.btn{border:1px solid var(--ink);border-radius:14px;padding:15px 18px;font-weight:900;font-size:16px;cursor:pointer;transition:.12s transform,.12s background,.12s color;background:var(--ink);color:#fff}.btn:active{transform:scale(.985)}.btn.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}.btn.gold{background:var(--accent);border-color:var(--accent);color:#fff}.grid{display:grid;gap:14px}.two{grid-template-columns:1fr 1fr}@media(max-width:700px){.two{grid-template-columns:1fr}.title{font-size:31px}.wrap{padding:12px 10px 34px}.hero{border-radius:22px}.btn{width:100%}}
+.card{border:1px solid var(--line);background:var(--paper);border-radius:22px;padding:18px;box-shadow:none}.axis{background:var(--soft);border:1px solid var(--line);border-radius:16px;padding:13px}.axis b{display:block;margin-bottom:4px}.axis small{color:var(--muted);line-height:1.55}.topbar{position:sticky;top:0;z-index:5;background:rgba(247,247,244,.94);backdrop-filter:blur(10px);padding:10px 0 12px}.progress{height:10px;background:#e5e5e0;border-radius:999px;overflow:hidden;border:1px solid var(--line)}.bar{height:100%;width:0;background:var(--accent);border-radius:999px;transition:.25s}.qcard{margin-top:16px;background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:none}.qnum{color:var(--muted);font-weight:900;font-size:14px}.qtext{font-size:25px;line-height:1.24;font-weight:950;margin:10px 0 18px}.choicePair{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}.choiceBox{background:#f3f3ef;border:1px solid var(--line);border-radius:16px;padding:14px;min-height:82px}.choiceBox span{display:block;color:var(--muted);font-size:12px;font-weight:900;margin-bottom:6px}.sliderPanel{border:1px solid var(--line);border-radius:18px;background:#fff;padding:16px;margin:8px 0 14px}.sliderTop{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:14px}.sliderValue{display:inline-flex;align-items:center;justify-content:center;min-width:112px;border-radius:999px;background:var(--accent2);color:var(--accent);font-size:14px;font-weight:950;padding:8px 10px;border:1px solid #d8e3ff}.range{width:100%;accent-color:var(--accent)}.sliderLabels{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;font-weight:800;margin-top:8px}.mini{font-size:13px;color:var(--muted);line-height:1.6}.result{margin-top:16px}.typeHero{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:22px}.emoji{font-size:56px}.code{display:inline-block;border-radius:999px;background:var(--ink);padding:8px 12px;color:#fff;font-weight:900;font-size:13px}.typeName{font-size:40px;line-height:1.05;margin:12px 0 8px;font-weight:950}.tag{color:var(--accent);font-size:18px;font-weight:950}.desc{color:#333;line-height:1.8}.meter{margin:12px 0;padding:14px;background:#f3f3ef;border-radius:16px;border:1px solid var(--line)}.meterHead{display:flex;justify-content:space-between;gap:10px;margin-bottom:8px}.track{height:10px;background:#e2e2dc;border-radius:999px;position:relative;overflow:hidden;border:1px solid var(--line)}.track:before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:#999}.fill{height:100%;background:var(--accent);border-radius:999px;width:50%}.poster{white-space:pre-line;background:#f3f3ef;color:var(--ink);border:1px solid var(--line);border-radius:18px;padding:18px;line-height:1.65;font-weight:650}.hidden{display:none!important}.types{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}@media(max-width:700px){.choicePair{grid-template-columns:1fr}.qtext{font-size:22px}.typeName{font-size:34px}.types{grid-template-columns:1fr}.emoji{font-size:48px}.sliderTop{align-items:flex-start;flex-direction:column}.sliderValue{width:100%}}
+.typeMini{background:#f3f3ef;border:1px solid var(--line);border-radius:16px;padding:13px}.typeMini b{display:block}.typeMini small{color:var(--muted)}.footer{color:#777;font-size:12px;text-align:center;margin-top:24px;line-height:1.6}.notice{background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:14px;padding:13px;color:#333;line-height:1.6}.recordItem{border:1px solid var(--line);background:#f3f3ef;border-radius:16px;padding:14px}.recordTop{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.recordCode{font-weight:950;color:var(--accent)}.recordMeta{font-size:12px;color:var(--muted);line-height:1.6}.pillRow{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.pill{border:1px solid var(--line);border-radius:999px;background:#fff;padding:6px 9px;font-size:12px;font-weight:800;color:#333}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section id="home" class="hero">
+    <div class="badge">禾沐 · 现实风格测试</div>
+    <h1 class="title">别人眼里的你，<br/>到底是哪种人？</h1>
+    <p class="sub">从 6 个现实维度（能量、节奏、判断、焦点、关系、变化）分析你的风格、优势、雷区和适合方向。测完直接生成一张「别人一眼看懂你」的结果卡片。</p>
+    <div class="grid two" style="margin-top:18px">
+      <button class="btn gold" onclick="start()">开始测试</button>
+      <button class="btn secondary" onclick="showAbout()">先看分类规则</button>
+    </div>
+    <button class="btn secondary" style="margin-top:10px;width:100%" onclick="toggleRecords()">查看测试记录</button>
+    <div class="grid two" style="margin-top:16px">
+      <div class="axis"><b>玩法</b><small>30 道情境题，用滑轨选择你更偏向哪边。不要选“理想的自己”，选真实的自己。</small></div>
+      <div class="axis"><b>结果</b><small>测完直接生成一张「别人一眼看懂你」的卡片：风格代码、类型称号、优势、雷区和适合方向都在里面。</small></div>
+    </div>
+  </section>
+
+  <section id="records" class="card hidden" style="margin-top:14px">
+    <h2>测试记录</h2>
+    <p class="mini">记录只保存在当前设备的浏览器里，不会上传。换手机、清缓存或换浏览器后，记录可能会消失。</p>
+    <div id="recordList" class="grid" style="margin-top:12px"></div>
+    <div class="grid two" style="margin-top:14px">
+      <button class="btn gold" onclick="start()">再测一次</button>
+      <button class="btn secondary" onclick="clearRecords()">清空记录</button>
+    </div>
+  </section>
+
+  <section id="about" class="card hidden" style="margin-top:14px">
+    <h2>六维分类框架</h2>
+    <div id="axisList" class="grid two"></div>
+    <button class="btn gold" style="margin-top:16px" onclick="start()">我懂了，开始测</button>
+  </section>
+
+  <section id="test" class="hidden">
+    <div class="topbar">
+      <div style="display:flex;justify-content:space-between;margin-bottom:8px;color:#cbd5ff;font-weight:900;font-size:13px"><span id="stage">第 1 关</span><span id="percent">0%</span></div>
+      <div class="progress"><div id="bar" class="bar"></div></div>
+    </div>
+    <div class="qcard">
+      <div class="qnum" id="qnum"></div>
+      <div class="qtext" id="qtext"></div>
+      <div class="choicePair">
+        <div class="choiceBox"><span>左边更像我</span><b id="leftText"></b></div>
+        <div class="choiceBox"><span>右边更像我</span><b id="rightText"></b></div>
+      </div>
+      <div class="sliderPanel">
+        <div class="sliderTop">
+          <div>
+            <b>拖动滑轨选择倾向</b>
+            <div class="mini">越靠左代表越像左边，越靠右代表越像右边。</div>
+          </div>
+          <div id="sliderValue" class="sliderValue">中间 / 都像</div>
+        </div>
+        <input id="answerRange" class="range" type="range" min="-2" max="2" step="1" value="0" oninput="updateSliderLabel()" />
+        <div class="sliderLabels"><span>强烈偏左</span><span>中间</span><span>强烈偏右</span></div>
+      </div>
+      <div class="grid two">
+        <button class="btn secondary" onclick="back()">上一题</button>
+        <button class="btn gold" onclick="answerFromSlider()">确定，下一题</button>
+      </div>
+      <p class="mini">提示：第一反应通常比过度分析更准。</p>
+    </div>
+  </section>
+
+  <section id="result" class="result hidden"></section>
+  <p class="footer">本测试用于自我理解和娱乐探索，不用于医学诊断、招聘筛选或给别人贴死标签。</p>
+</div>
+
+<script>
+const AXES={
+E:{name:"能量来源",left:"外放取能",right:"内收蓄能",leftCode:"X",rightCode:"N",explain:"靠外界互动被点燃，还是靠独处整理恢复。"},
+P:{name:"行动节奏",left:"即刻推进",right:"蓄势成局",leftCode:"K",rightCode:"M",explain:"先做再修，还是先看清再动。"},
+J:{name:"判断核心",left:"原则清晰",right:"情境灵活",leftCode:"G",rightCode:"R",explain:"更信稳定标准，还是更看具体场景。"},
+A:{name:"注意焦点",left:"系统全局",right:"细节现场",leftCode:"S",rightCode:"D",explain:"先看结构趋势，还是先抓真实细节。"},
+C:{name:"关系姿态",left:"主导牵引",right:"共振协作",leftCode:"L",rightCode:"H",explain:"定方向带节奏，还是调频率促合作。"},
+R:{name:"变化态度",left:"探索破局",right:"守护稳定",leftCode:"V",rightCode:"T",explain:"对未知兴奋，还是对稳定敏感。"}
+};
+const QUESTIONS=[
+["周末突然有人约你参加一个陌生活动，你第一反应是？","E","去看看，说不定有惊喜。","先看自己状态，别把能量花乱。"],
+["面对复杂目标，你通常会？","P","先做一个版本，边走边改。","先把关键路径和风险想清楚。"],
+["别人不按规矩但结果还不错，你会？","J","结果好也不能忽略规则。","要看具体情况，别太死板。"],
+["刚进入新环境，你最先注意到？","A","权力结构、流程和运行逻辑。","表情、语气、摆放和现场细节。"],
+["小组陷入混乱时，你更可能？","C","站出来拆问题、定节奏。","先听大家，让关系重新对齐。"],
+["同样一份工作，你更喜欢？","R","有变化、有新问题、有试错空间。","稳定可控、标准清楚、越做越熟。"],
+["聚会结束后，你通常感觉？","E","被点燃了，还想继续聊。","挺开心，但需要独处恢复。"],
+["机会窗口很短时，你会？","P","先抓住，晚点再优化。","宁愿慢点，也别冲进坑。"],
+["判断一个人靠不靠谱，你更看重？","J","底线、标准和稳定承诺。","分寸、变通和照顾局面。"],
+["看计划书，你先看？","A","整体逻辑、目标、资源配置。","执行细节、时间点和漏洞。"],
+["你在关系中更常扮演？","C","推动者：让事情往前走。","连接者：让人彼此理解。"],
+["旧方法还可以但不够酷，你会？","R","试试新的，也许能上台阶。","别为新而新，先保稳定产出。"],
+["在陌生人很多的场合，你会？","E","自然找话题，快速打开场面。","先观察，确定安全再靠近。"],
+["学一项技能时，你通常是？","P","直接上手，错了再查。","先系统了解，再开始练。"],
+["朋友崩溃但明显也有错，你会？","J","安慰归安慰，问题也要讲清楚。","先接住情绪，之后再谈对错。"],
+["哪种信息更吸引你？","A","趋势、模型、底层原因。","案例、画面、真实细节。"],
+["团队讨论时，你最受不了？","C","没人拍板，一直绕圈。","有人太强势，压住别人声音。"],
+["生活出现大变化时，你内心更像？","R","有点兴奋，终于有新地图。","先稳住基本盘，别乱。"],
+["表达观点时，你更像？","E","边说边想，说出来就清楚。","想清楚再说，不想临场乱讲。"],
+["别人催你快点决定，你会？","P","可以，先定一个方向。","别催，缺信息时快就是乱。"],
+["你心中的成熟更接近？","J","有原则，不轻易被带偏。","有弹性，懂得因事调整。"],
+["复盘失败时，你先问？","A","系统哪里设计错了？","哪个细节当时没处理好？"],
+["别人夸你时，更可能说你？","C","有气场、有判断、有带动力。","舒服、体贴、能让人放松。"],
+["你对稳定生活的态度更像？","R","太稳定会闷，需要新变量。","稳定是底气，不是无聊。"],
+["重大选择时，你更容易被什么推动？","E","外界反馈、机会、人和场。","内在确定感、长期兴趣、个人节奏。"],
+["任务做到一半发现方向可能不对，你会？","P","马上改，别等完美方案。","停下来重算，别越错越远。"],
+["你不喜欢哪类人？","J","没有边界、说变就变的人。","只讲道理、不看局面的人。"],
+["你给建议时更常说？","A","先搞清楚整体结构。","先把这一步具体做好。"],
+["当你很有把握时，你会？","C","直接给结论，带大家执行。","讲出依据，让大家一起进入状态。"],
+["你更怕哪种人生？","R","没有冒险、没有突破、一直重复。","总在折腾、没有积累、没有安全感。"]
+];
+const TYPES={
+"XKGSLV":["🔥","开疆统帅","看见机会就带队冲锋的人。","你像自带方向盘和发动机的越野车，喜欢复杂局面、关键节点和高压推进。短板是容易嫌别人慢。","创业、增长、项目攻坚、商务开拓、组织变革。","练习听完别人说话，不要把所有犹豫都理解成软弱。"],
+"XMGSLV":["🚀","改革总设计师","不只是要赢，还要重做游戏规则。","你外向、能布局、敢变化，也有清晰标准。你常常不是满足于优化，而是想重构。","新业务、战略转型、产品创新、公共倡导。","改革不是推倒一切，要让新人也能走得稳。"],
+"NMGSLV":["♟️","冷静策士","安静计算，关键时出手。","你内收、系统、原则强，也愿意探索新解法。你不急着表现，但脑中已经跑完几套模型。","研究、产品策略、架构、投资分析、复杂决策。","别等百分百确定才行动。"],
+"NMGSLT":["🧱","隐形守城者","不张扬，但能守住关键系统。","你重视结构、原则和长期稳定。你话不一定多，但很可靠，适合负责不能出错的部分。","财务、法务、工程质量、安全、后端系统。","不是所有变化都是风险。"],
+"NMRSV":["🧪","深海发明家","在安静里孵化新世界。","你喜欢独立思考、抽象模型和新可能，脑内常有别人没听过的连接。","科研、写作、产品概念、技术创新、艺术实验。","给想法找一个最小实验。"],
+"NMRDHT":["🔍","细腻观察家","看见别人忽略的微小变化。","你安静、敏感、重现场细节，也愿意按情境调整。短板是容易想太多。","用户研究、编辑、设计质检、咨询、服务体验。","观察很珍贵，但不要让每个细节都变成压力。"],
+"XMRSHV":["✨","人群点灯者","用热情、故事和意义点亮别人。","你有感染力、关注未来，也擅长照顾人的状态。短板是容易低估执行细节。","演讲、培训、品牌传播、社群、教育。","每次点燃之后，都要安排谁来添柴。"],
+"XKRSHV":["🎉","快乐发动机","把气氛、机会和行动一起带起来。","你喜欢热闹、有变化和即时反馈。你能让沉闷局面活起来。","活动、主持、销售、直播、旅游、社区运营。","快乐很强，但长期信用来自把尾巴收干净。"],
+"NKGDLT":["⚙️","精密执行者","少说废话，把事情做到位。","你内敛但行动不慢，重细节、重规则、重可靠性。短板是可能把自己逼太紧。","工程执行、审计、测试、数据治理、医疗技术。","质量不是靠一个人硬扛出来的。"],
+"NKRDV":["🛠️","自由手艺人","喜欢亲手试，靠经验升级。","你不喜欢被过度管理，擅长在真实操作中找到窍门。","设计制作、维修、运动、摄影、烹饪、独立创作。","把你的手感记录下来。"],
+"XKRDHT":["🍜","烟火调度员","接地气，也能把人照顾舒服。","你行动快、看细节、懂场合，也很会照顾人的实际体验。","服务业、活动统筹、客户关系、线下运营。","照顾别人前，先给自己的能量留预算。"],
+"XMRSHT":["🌙","温和领航员","用愿景和理解感带大家往前走。","你能看见未来方向，也在意人的感受。你不喜欢粗暴命令。","教育、组织发展、品牌、公益、文化建设。","有些边界需要清晰说出口。"]
+};
+const names=["开路者","守城者","织网者","造梦者","调度者","观察者","策士","工匠","点灯者","破局者","管家","游侠"];
+let i=0, answers=[];
+const SLIDER_LABELS={[-2]:'强烈偏左',[-1]:'有点偏左',0:'中间 / 都像',1:'有点偏右',2:'强烈偏右'};
+function showAbout(){document.getElementById('about').classList.toggle('hidden')}
+function start(){document.getElementById('home').classList.add('hidden');document.getElementById('about').classList.add('hidden');document.getElementById('records').classList.add('hidden');document.getElementById('test').classList.remove('hidden');i=0;answers=[];renderQ()}
+function renderAxis(){let el=document.getElementById('axisList');el.innerHTML=Object.values(AXES).map(a=>`<div class="axis"><b>${a.name}</b><small>${a.left} ↔ ${a.right}<br>${a.explain}</small></div>`).join('')}
+function renderQ(){let q=QUESTIONS[i];document.getElementById('qnum').textContent=`第 ${i+1} / ${QUESTIONS.length} 题`;document.getElementById('qtext').textContent=q[0];document.getElementById('leftText').textContent=q[2];document.getElementById('rightText').textContent=q[3];let p=Math.round((answers.length/QUESTIONS.length)*100);document.getElementById('percent').textContent=p+'%';document.getElementById('bar').style.width=p+'%';document.getElementById('stage').textContent=`第 ${Math.min(6,Math.floor(i/5)+1)} 关 · ${AXES[q[1]].name}`;let r=document.getElementById('answerRange');if(r){r.value=0;updateSliderLabel();}}
+function updateSliderLabel(){let r=document.getElementById('answerRange');let label=document.getElementById('sliderValue');if(r&&label){label.textContent=SLIDER_LABELS[Number(r.value)]}}
+function answerFromSlider(){let r=document.getElementById('answerRange');answer(-Number(r.value))}
+function answer(v){answers.push({axis:QUESTIONS[i][1],value:v}); if(i<QUESTIONS.length-1){i++;renderQ()}else{showResult()}}
+function back(){if(i>0){i--;answers.pop();renderQ()}}
+function scores(){let s={E:0,P:0,J:0,A:0,C:0,R:0};answers.forEach(a=>s[a.axis]+=a.value);return s}
+function codeOf(s){return Object.entries(AXES).map(([k,a])=>s[k]>=0?a.leftCode:a.rightCode).join('')}
+function typeOf(code,s){if(TYPES[code])return TYPES[code];let strong=Object.keys(AXES).sort((a,b)=>Math.abs(s[b])-Math.abs(s[a])).slice(0,2).map(a=>AXES[a][s[a]>=0?'left':'right']).join('·');let name=strong+"型";return ["🧩",name,"混合型人格，不能用单一模板粗暴概括。",`你的代码是 ${code}。你最明显的底色是「${strong}」。这类人往往适配力强，但也容易在不同环境中切换过多，需要抓住自己的核心优先级。`,"适合能给你一定自主权、同时允许长期积累的方向。","别急着给自己贴死标签，优先看六维条形图，那里比称号更准。"]}
+function side(s,k){let a=AXES[k];return s[k]>=0?[a.left,a.leftCode]:[a.right,a.rightCode]}
+function meter(s,k){let a=AXES[k],raw=s[k],pct=50+Math.max(-45,Math.min(45,raw/10*45)),ss=side(s,k);return `<div class="meter"><div class="meterHead"><b>${a.name}</b><span>${ss[0]} · ${Math.min(100,Math.round(Math.abs(raw)/10*100))}%</span></div><div class="track"><div class="fill" style="width:${pct}%"></div></div><p class="mini">${a.left} ↔ ${a.right}<br>${a.explain}</p></div>`}
+
+function codeExplain(s,code){
+  const keys=Object.keys(AXES);
+  const rows=keys.map((k,idx)=>{
+    const a=AXES[k];
+    const raw=s[k];
+    const isLeft=raw>=0;
+    const word=isLeft?a.left:a.right;
+    const letter=code[idx];
+    const percent=Math.min(100,Math.round(Math.abs(raw)/10*100));
+    const leftRight=`${a.left} ↔ ${a.right}`;
+    return `<div class="axis"><b>${letter} = ${word}</b><small>${a.name}<br>${leftRight}<br>当前倾向占比：${percent}%</small></div>`;
+  }).join('');
+  return `<div class="card" style="margin-top:14px"><h2>坐标解读</h2><p class="mini">你的风格坐标是 <b>${code}</b>。它不是随机字母，而是按 6 个现实维度依次生成：能量、节奏、判断、焦点、关系、变化。每个字母代表你在该维度上更偏向哪一侧；占比越高，说明这个倾向越明显。</p><div class="grid two" style="margin-top:12px">${rows}</div></div>`;
+}
+
+function examplesOf(code,t){const map={
+'XKGSLV':'像刘邦带队打天下、孙悟空闯局、狼群里的头狼：先冲开路，再边打边调。',
+'XMGSLV':'像商鞅变法、乔布斯重做规则、钢铁侠造新系统：不满足小修小补，想换一套玩法。',
+'NMGSLV':'像诸葛亮、福尔摩斯、猫头鹰：不急着出声，但脑子里已经把棋盘推演很多遍。',
+'NMGSLT':'像萧何守后方、老管家、海龟：稳、准、耐用，越关键越不能少。',
+'NMRSV':'像达芬奇、庄子、章鱼：安静但脑洞深，能把远处的东西连在一起。',
+'NMRDHT':'像林黛玉、华生医生、猫：敏锐、细腻，能捕捉别人忽略的微小变化。',
+'XMRSHV':'像奥普拉、唐僧、金毛犬：擅长把人聚起来，用意义感和温度带动大家。',
+'XKRSHV':'像黄蓉、派对主持人、海豚：气氛感强，能快速把局面变活。',
+'NKGDLT':'像鲁班、瑞士钟表匠、蚂蚁：安静但可靠，重细节、重质量、重完成度。',
+'NKRDV':'像鲁滨逊、宫崎骏作品里的手艺人、狐狸：靠手感和现场经验解决问题。',
+'XKRDHT':'像优秀店长、宋江的后勤面、边牧：能看见现场需求，也能把人和事安排妥。',
+'XMRSHT':'像孔子、甘地、鲸鱼：温和但有方向，用理解感和长期感影响别人。'};return map[code]||`像变色龙、复合型角色或杂交犬：不是单一模板，而是会根据环境切换打法；你的核心更接近「${t[1]}」。`}
+function analysisOf(code,t){return `你给人的感觉不是一句“外向”或“内向”能说完。你的主色调是「${t[1]}」：${t[2]} 现实里，你往往会先用自己的方式判断局面，再决定是推进、观察、协调还是守住边界。别人容易看到你的能力点，但不一定马上懂你的底层逻辑。`}
+
+const RECORD_KEY='hemu_style_test_records_v1';
+function recordAxes(s){return Object.keys(AXES).map(k=>{const a=AXES[k],raw=s[k],isLeft=raw>=0;return {axis:a.name,word:isLeft?a.left:a.right,letter:isLeft?a.leftCode:a.rightCode,percent:Math.min(100,Math.round(Math.abs(raw)/10*100))};});}
+function getRecords(){try{return JSON.parse(localStorage.getItem(RECORD_KEY)||'[]')}catch(e){return []}}
+function setRecords(list){try{localStorage.setItem(RECORD_KEY,JSON.stringify(list.slice(0,20)))}catch(e){}}
+function saveRecord(code,t,s){const rec={time:new Date().toLocaleString('zh-CN',{hour12:false}),code,name:t[1],tag:t[2],axes:recordAxes(s)};const list=getRecords();list.unshift(rec);setRecords(list);return rec;}
+function toggleRecords(){document.getElementById('about').classList.add('hidden');const box=document.getElementById('records');box.classList.toggle('hidden');renderRecords();if(!box.classList.contains('hidden'))box.scrollIntoView({behavior:'smooth',block:'start'});}
+function renderRecords(){const el=document.getElementById('recordList');if(!el)return;const list=getRecords();if(!list.length){el.innerHTML='<div class="notice">还没有测试记录。完成一次测试后，结果会自动保存在这里。</div>';return;}el.innerHTML=list.map(r=>`<div class="recordItem"><div class="recordTop"><div><b>${r.name}</b><div class="recordCode">${r.code}</div></div><div class="recordMeta">${r.time}<br>${r.tag||''}</div></div><div class="pillRow">${(r.axes||[]).map(a=>`<span class="pill">${a.axis}：${a.letter} ${a.word} ${a.percent}%</span>`).join('')}</div></div>`).join('');}
+function clearRecords(){if(confirm('确定清空本机测试记录吗？')){localStorage.removeItem(RECORD_KEY);renderRecords();}}
+
+function showResult(){document.getElementById('test').classList.add('hidden');let s=scores(),code=codeOf(s),t=typeOf(code,s);saveRecord(code,t,s);let ex=examplesOf(code,t),ana=analysisOf(code,t);document.getElementById('result').classList.remove('hidden');document.getElementById('result').innerHTML=`
+<div class="typeHero"><span class="code">别人一眼看懂你的卡片 · ${code}</span><div class="emoji">${t[0]}</div><div class="typeName">${t[1]}</div><div class="tag">${t[2]}</div><p class="desc">${t[3]}</p><div class="grid two"><div class="axis"><b>你的优势 / 适合方向</b><small>${t[4]}</small></div><div class="axis"><b>你的雷区 / 成长提醒</b><small>${t[5]}</small></div></div></div>
+<div class="card" style="margin-top:14px"><h2>六维画像</h2>${Object.keys(AXES).map(k=>meter(s,k)).join('')}</div>
+${codeExplain(s,code)}
+<div class="card" style="margin-top:14px"><h2>人物分析</h2><div class="poster"><b>别人怎么看你：</b><br>${ana}<br><br><b>你像谁 / 像什么：</b><br>${ex}<br><br><b>一句话看懂你：</b><br>你不是固定性格标签，而是一套现实里的处事系统：优势在于 ${t[4]}；需要注意的是 ${t[5]}</div><div class="notice" style="margin-top:12px">这次结果已保存到本机「测试记录」。你可以回到首页查看历史结果。</div><div class="grid two" style="margin-top:12px"><button class="btn gold" onclick="location.reload()">重新测试</button><button class="btn secondary" onclick="window.scrollTo(0,0)">回到顶部</button></div></div>
+<div class="card" style="margin-top:14px"><h2>基础类型样例库</h2><div class="types">${Object.entries(TYPES).map(([c,x])=>`<div class="typeMini"><b>${x[0]} ${x[1]}</b><small>${c} · ${x[2]}</small></div>`).join('')}</div></div>`;window.scrollTo(0,0)}
+renderAxis();
+</script>
+</body>
+</html>
