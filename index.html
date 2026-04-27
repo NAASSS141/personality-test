@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>九百万达成时间测试</title>
+  <style>
+    :root{
+      --bg:#f7f7f4; --card:#fff; --text:#20201d; --muted:#6f6b62;
+      --line:#e6e1d8; --soft:#f1efea; --dark:#24231f;
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif}
+    .app{max-width:430px;margin:0 auto;padding:18px 14px 96px}
+    .hero,.card{background:var(--card);border:1px solid var(--line);border-radius:28px;box-shadow:0 8px 28px rgba(0,0,0,.04)}
+    .hero{padding:22px;margin-bottom:14px}
+    .pill{display:inline-flex;align-items:center;border-radius:999px;background:var(--soft);padding:7px 12px;font-size:12px;color:var(--muted);margin-bottom:14px}
+    h1{font-size:32px;line-height:1.12;margin:0 0 12px;font-weight:750;letter-spacing:-.04em}
+    p{margin:0;color:var(--muted);font-size:15px;line-height:1.75}
+    .progress{height:8px;background:var(--soft);border-radius:999px;overflow:hidden;margin-top:16px}
+    .bar{height:100%;width:0;background:var(--dark);border-radius:999px;transition:.25s}
+    .small{font-size:12px;color:var(--muted);margin-top:8px}
+    .q{padding:18px;margin-bottom:12px}
+    .num{font-size:12px;color:#aaa59b}
+    .q h2{font-size:18px;line-height:1.35;margin:4px 0 8px;font-weight:720}
+    .hint{font-size:13px;line-height:1.55;margin-bottom:14px}
+    .options{display:grid;gap:10px}
+    .opt{min-height:50px;border:1px solid var(--line);background:#fbfbf8;border-radius:18px;padding:13px 14px;text-align:left;font-size:15px;line-height:1.35;color:#3d3933}
+    .opt:active{transform:scale(.99)}
+    .opt.selected{background:var(--dark);color:white;border-color:var(--dark)}
+    .bottom{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.96);border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(0,0,0,.06);backdrop-filter:blur(10px);padding:12px 14px calc(12px + env(safe-area-inset-bottom))}
+    .bottom-inner{max-width:430px;margin:0 auto;display:flex;align-items:center;gap:12px}
+    .bottom-text{flex:1;min-width:0}
+    .bottom-title{font-size:14px;font-weight:700}
+    .mini-progress{height:6px;background:var(--soft);border-radius:99px;overflow:hidden;margin-top:6px}
+    button.primary{height:46px;border:0;border-radius:18px;background:var(--dark);color:#fff;padding:0 18px;font-weight:700;font-size:15px}
+    button.primary:disabled{background:#cfc9bf;color:#fff}
+    .result-head{padding:4px 2px 2px;margin-bottom:12px}
+    .result-title{font-size:30px;line-height:1.15;margin:10px 0 12px;font-weight:800;letter-spacing:-.04em}
+    .grid{display:grid;gap:12px}
+    .result-card{padding:18px;border-radius:22px;background:#fff;border:1px solid var(--line);box-shadow:0 8px 28px rgba(0,0,0,.04)}
+    .label{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:14px;margin-bottom:10px}
+    .icon{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:999px;background:var(--soft);font-size:12px;font-weight:800;color:#5c574f}
+    .big{font-size:29px;font-weight:800;letter-spacing:-.03em}
+    .tag{font-size:24px;font-weight:800;line-height:1.22}
+    .rose{background:#fff7f7;color:#9f2f42;border-color:#f1d8dc}
+    .slate{background:#f8fafc;color:#475569;border-color:#e2e8f0}
+    .amber{background:#fffbeb;color:#92400e;border-color:#fde68a}
+    .emerald{background:#ecfdf5;color:#047857;border-color:#bbf7d0}
+    .sky{background:#f0f9ff;color:#0369a1;border-color:#bae6fd}
+    .violet{background:#f5f3ff;color:#6d28d9;border-color:#ddd6fe}
+    .orange{background:#fff7ed;color:#9a3412;border-color:#fed7aa}
+    .teal{background:#f0fdfa;color:#0f766e;border-color:#99f6e4}
+    .section-title{display:flex;align-items:center;gap:8px;font-size:17px;font-weight:800;margin-bottom:12px}
+    .item{display:flex;gap:10px;background:#f8f8f5;border-radius:16px;padding:12px;margin-top:9px;font-size:14px;line-height:1.62;color:#514d45}
+    .dot{flex:0 0 auto;width:24px;height:24px;border-radius:99px;background:#fff;display:flex;align-items:center;justify-content:center;color:#8c857a;font-weight:800;font-size:12px}
+    .hide{display:none!important}
+  </style>
+</head>
+<body>
+  <main class="app">
+    <section id="quiz">
+      <div class="hero">
+        <div class="pill">20–30岁专用 · 本地手机版</div>
+        <h1>九百万达成时间测试</h1>
+        <p>通过收入、储蓄、投资、行业、跃迁机会和执行力，判断你离900万目标最主要的差距。</p>
+        <div class="progress"><div id="topBar" class="bar"></div></div>
+        <div id="topCount" class="small">已完成 0/12</div>
+      </div>
+      <div id="questionList"></div>
+    </section>
+
+    <section id="result" class="hide">
+      <div class="result-head">
+        <div class="pill"><span class="icon">测</span> 九百万达成时间测试结果</div>
+        <div id="resultName" class="result-title"></div>
+        <p id="overview"></p>
+      </div>
+
+      <div class="grid">
+        <div class="result-card">
+          <div class="label"><span class="icon">时</span>预计达成时间</div>
+          <div id="years" class="big"></div>
+          <p style="margin-top:10px">这是基于你当前收入、储蓄、投资和跃迁信号的综合判断。</p>
+        </div>
+
+        <div class="result-card">
+          <div class="label"><span class="icon">速</span>财富推进度</div>
+          <div class="progress"><div id="scoreBar" class="bar"></div></div>
+          <div id="score" class="big" style="margin-top:10px"></div>
+          <p style="margin-top:8px">分数不是资产排名，而是当前路径接近900万目标的效率。</p>
+        </div>
+
+        <div id="tagCard" class="result-card">
+          <div class="label"><span class="icon">!</span>核心判断</div>
+          <div id="tag" class="tag"></div>
+          <p id="secondary" style="margin-top:10px"></p>
+        </div>
+
+        <div class="result-card">
+          <div class="section-title"><span class="icon">因</span>为什么你会是这个类型</div>
+          <div id="why"></div>
+        </div>
+
+        <div class="result-card">
+          <div class="section-title"><span class="icon">短</span>最大短板</div>
+          <div id="bottleneck" style="font-size:20px;font-weight:800;line-height:1.35"></div>
+          <p style="margin-top:12px">结果页的重点不是给你贴标签，而是告诉你下一步最值得优化的变量。</p>
+        </div>
+
+        <div class="result-card"><div class="section-title"><span class="icon">策</span>你的三条核心策略</div><div id="strategy"></div></div>
+        <div class="result-card"><div class="section-title"><span class="icon">行</span>7天行动计划</div><div id="sevenDays"></div></div>
+        <div class="result-card"><div class="section-title"><span class="icon">书</span>推荐书籍</div><div id="books"></div></div>
+        <div class="result-card"><div class="section-title"><span class="icon">影</span>推荐视频关键词</div><div id="videos"></div></div>
+        <div class="result-card"><div class="section-title">名人建议</div><p id="quote"></p></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="bottom">
+    <div class="bottom-inner">
+      <div class="bottom-text">
+        <div id="bottomTitle" class="bottom-title">已完成 0/12</div>
+        <div class="mini-progress"><div id="bottomBar" class="bar"></div></div>
+      </div>
+      <button id="mainBtn" class="primary" disabled>看结果 →</button>
+    </div>
+  </div>
+
+<script>
+const questions = [
+  {id:"asset",title:"你目前大约有多少可支配资产？",hint:"不含自住房，包含现金、存款、基金、股票等可支配资产。",options:[
+    {label:"没有或负债",value:0,scores:{repair:3,latent:1}},
+    {label:"1–10万",value:1,scores:{latent:2,stable:1}},
+    {label:"10–50万",value:2,scores:{stable:2,investWeak:1}},
+    {label:"50–100万",value:3,scores:{stable:2,highIncomeLowRetain:1}},
+    {label:"100万以上",value:4,scores:{leap:1,investWeak:1}}
+  ]},
+  {id:"debt",title:"你目前是否有消费类负债？",hint:"如信用卡分期、网贷、消费贷等，不含正常房贷。",options:[
+    {label:"没有",value:3,scores:{stable:1,leap:1}},
+    {label:"少量：5万以内",value:2,scores:{repair:1}},
+    {label:"中等：5–20万",value:1,scores:{repair:3,highRisk:1}},
+    {label:"较多：20万以上",value:0,scores:{repair:4,highRisk:2}}
+  ]},
+  {id:"income",title:"你现在每月税后收入大约是多少？",hint:"按最近6个月平均水平填写。",options:[
+    {label:"低于5k",value:0,scores:{repair:3,latent:2}},
+    {label:"5k–1万",value:1,scores:{latent:2,repair:1}},
+    {label:"1万–2万",value:2,scores:{stable:2,investWeak:1}},
+    {label:"2万–4万",value:3,scores:{growth:1,highIncomeLowRetain:2}},
+    {label:"4万以上",value:4,scores:{growth:2,highIncomeLowRetain:3}}
+  ]},
+  {id:"incomeGrowth",title:"过去2年，你的收入变化更接近哪种？",hint:"用事实约束预期，避免过度乐观。",options:[
+    {label:"基本没变",value:0,scores:{stable:2,latent:1}},
+    {label:"小幅增长",value:1,scores:{stable:2}},
+    {label:"明显增长",value:2,scores:{growth:3,sideHustle:1}},
+    {label:"接近翻倍或已翻倍",value:3,scores:{growth:4,leap:2}}
+  ]},
+  {id:"industry",title:"你所在行业的发展情况如何？",hint:"行业会影响你的收入天花板。",options:[
+    {label:"下降或机会变少",value:0,scores:{repair:1,latent:2}},
+    {label:"基本稳定",value:1,scores:{stable:2}},
+    {label:"正在增长",value:2,scores:{growth:2,leap:1}},
+    {label:"快速增长，机会很多",value:3,scores:{growth:3,leap:2}}
+  ]},
+  {id:"saving",title:"你每个月大概能剩下多少钱？",hint:"收入减去所有必要和非必要支出后的结余。",options:[
+    {label:"存不下或为负",value:0,scores:{repair:4}},
+    {label:"2k以内",value:1,scores:{repair:1,latent:2}},
+    {label:"2k–5k",value:2,scores:{stable:2,investWeak:1}},
+    {label:"5k–1万",value:3,scores:{stable:2,growth:1}},
+    {label:"1万以上",value:4,scores:{growth:2,investWeak:2}}
+  ]},
+  {id:"spending",title:"你的消费习惯更接近哪种？",hint:"这一题用于校验真实财富留存率。",options:[
+    {label:"经常月光甚至超支",value:0,scores:{repair:3,highIncomeLowRetain:2}},
+    {label:"基本持平",value:1,scores:{repair:1,highIncomeLowRetain:1}},
+    {label:"有结余，但不稳定",value:2,scores:{stable:2}},
+    {label:"明显在存钱，先存后花",value:3,scores:{stable:2,growth:1}}
+  ]},
+  {id:"investing",title:"你目前是否在持续投资？",hint:"包括基金、ETF、股票、债券等长期投资。",options:[
+    {label:"完全没有",value:0,scores:{investWeak:4,repair:1}},
+    {label:"偶尔买一点",value:1,scores:{investWeak:2,stable:1}},
+    {label:"每月或每季度持续投入",value:2,scores:{stable:2,growth:1}},
+    {label:"有清晰资产配置并持续执行",value:3,scores:{growth:2,leap:1}}
+  ]},
+  {id:"investResult",title:"过去1–3年，你的投资结果如何？",hint:"不要填理想收益，按真实体验选择。",options:[
+    {label:"亏损或基本没赚",value:0,scores:{investWeak:3,highRisk:1}},
+    {label:"小赚，但不稳定",value:1,scores:{investWeak:2}},
+    {label:"稳定盈利，波动可接受",value:2,scores:{stable:1,growth:1}},
+    {label:"收益较高，但波动也大",value:3,scores:{highRisk:3,leap:1}}
+  ]},
+  {id:"leapChance",title:"未来3–5年，你有没有机会收入明显提升？",hint:"如晋升、跳槽、创业、转行到高薪赛道。",options:[
+    {label:"几乎没有",value:0,scores:{stable:2,latent:1}},
+    {label:"有一点可能",value:1,scores:{latent:1,stable:1}},
+    {label:"较大可能",value:2,scores:{growth:3,leap:1}},
+    {label:"路径很明确",value:3,scores:{leap:4,growth:2}}
+  ]},
+  {id:"side",title:"你有没有做过副业或额外赚钱尝试？",hint:"测试你是否具备第二现金流意识。",options:[
+    {label:"没有",value:0,scores:{latent:2,stable:1}},
+    {label:"尝试过但没赚到",value:1,scores:{latent:2}},
+    {label:"有赚过一些",value:2,scores:{sideHustle:3,growth:1}},
+    {label:"已有稳定副收入",value:3,scores:{sideHustle:5,leap:2}}
+  ]},
+  {id:"execution",title:"过去一年，你是否持续做提升收入的事？",hint:"例如学习硬技能、作品集、副业、转型准备、主动求职。",options:[
+    {label:"没有",value:0,scores:{latent:2,repair:1}},
+    {label:"偶尔做，但断断续续",value:1,scores:{latent:2}},
+    {label:"比较稳定，每周都有投入",value:2,scores:{growth:2,sideHustle:1}},
+    {label:"非常持续，有明确目标和复盘",value:3,scores:{leap:3,growth:2}}
+  ]}
+];
+
+const resultTypes = {
+  repair:{name:"起步修复型",years:"20年以上",tag:"先让现金流转正，再谈复利",class:"rose",overview:"你当前最需要解决的不是投资收益，而是基础现金流。收入、负债或储蓄习惯中至少有一项正在拖慢你。只要现金流没有稳定转正，任何高收益计划都会变成压力源。",why:["消费类负债或月度结余偏弱会持续侵蚀本金","收入增长尚未形成稳定趋势","过早追求投资或创业，容易因为现金流不足被迫中断"],bottleneck:"最大短板：现金流安全垫不足。",strategy:["先清理高息负债，不把消费贷当作现金流工具","把目标从“赚大钱”改成“连续6个月有结余”","优先提升主业收入，选择能在3–6个月内变现的技能"],sevenDays:["列出所有负债、利率和每月还款额","连续7天记录每一笔支出","砍掉一个最明显的非必要支出","整理简历，投递3个收入更高的岗位","建立一个500–1000元的小额应急账户"],books:["《小狗钱钱》：建立基础金钱秩序","《富爸爸穷爸爸》：理解资产与负债","《金钱心理学》：修正消费与安全感关系"],videos:["搜索：年轻人如何摆脱月光","搜索：个人现金流管理入门","搜索：消费负债清理方法"],quote:"查理·芒格的建议可以概括为：先避免愚蠢错误，再追求聪明收益。对你来说，第一步就是别让现金流继续漏水。"},
+  stable:{name:"稳定积累型",years:"15–25年",tag:"你走得稳，但速度偏慢",class:"slate",overview:"你已经具备一定收入和储蓄能力，财务状态相对健康。但路径偏线性：靠工资结余慢慢攒，能到达目标，却会花很久。你的重点不是更节省，而是给收入和资产增加速度。",why:["现金流不差，但收入增长斜率有限","投资或副业带来的加速效果不明显","目前策略适合保底，不适合快速接近900万"],bottleneck:"最大短板：增长率不足。",strategy:["每年主动争取一次涨薪、跳槽或岗位升级","把储蓄率稳定在30%以上，但不要把省钱当作唯一策略","用低成本长期投资承接结余，让资产开始复利"],sevenDays:["计算过去12个月真实储蓄率","列出本岗位薪资上限和下一档岗位要求","选择一个长期投资账户并设置自动转入","找一位行业内更高收入者访谈","制定未来90天的加薪或跳槽准备表"],books:["《指数基金投资指南》：建立低门槛复利系统","《远见》：规划职业阶段","《纳瓦尔宝典》：理解杠杆和可复制能力"],videos:["搜索：指数基金入门","搜索：如何提高职业收入","搜索：年轻人职业规划三阶段"],quote:"巴菲特长期强调复利和耐心。你不缺耐心，但需要更早让本金进入能长期增长的系统。"},
+  highIncomeLowRetain:{name:"高收入低转化型",years:"10–18年",tag:"赚得不少，但留下得不够",class:"amber",overview:"你的赚钱能力已经有基础，问题出在财富转化效率。高收入如果没有稳定留存，会变成高消费的燃料，而不是资产增长的本金。你最该优化的是收入留存率。",why:["收入水平较高，但月度结余没有同步提高","消费习惯可能随着收入上涨而扩张","缺少先存后花和强制投资机制"],bottleneck:"最大短板：财富留存率偏低。",strategy:["实行先存后花，把储蓄从意愿变成系统","设置大额消费冷静期，避免情绪性支出","把每次加薪的至少50%自动转入投资或资产账户"],sevenDays:["拉取过去3个月账单，找出前三类支出","设置发薪日自动转账","取消一个低频高价订阅或消费项目","建立季度净资产表","写下一个“收入增加后不增加”的消费规则"],books:["《邻家的百万富翁》：理解高收入不等于富有","《金钱心理学》：识别消费心理","《自动变有钱》：设计自动储蓄系统"],videos:["搜索：消费主义陷阱","搜索：先支付自己 理财","搜索：高收入为什么存不下钱"],quote:"摩根·豪塞尔在《金钱心理学》中反复提醒：财富是你没有花掉的钱。你的关键不是赚更多，而是让更多收入留下来。"},
+  growth:{name:"成长跃迁型",years:"6–12年",tag:"收入增长是你的主引擎",class:"emerald",overview:"你已经表现出不错的收入增长、行业机会或执行力。你的关键不是到处尝试，而是集中押注最有杠杆的能力，让收入增长持续发生。只要方向正确，你接近900万的速度会明显快于平均水平。",why:["收入增长趋势优于普通稳定路径","行业或岗位存在更高天花板","执行力能支撑持续升级，而不是只停留在想法"],bottleneck:"最大短板：资源可能被分散。",strategy:["集中提升一个能直接带来高收入的核心技能","尽量进入更高增长的平台、行业或客户圈层","把阶段性收入增长转化为可投资本金，而不是生活膨胀"],sevenDays:["写下未来3年最可能让收入翻倍的一个能力","列出10个目标岗位或客户画像","更新作品集、案例或简历","约一次行业前辈沟通","砍掉一个低价值副业或无效学习项目"],books:["《纳瓦尔宝典》：建立可扩展能力","《原则》：提升决策质量","《刻意练习》：把能力训练成结果"],videos:["搜索：职业跃迁方法","搜索：个人商业模式","搜索：高收入技能有哪些"],quote:"纳瓦尔的核心观点是：寻找杠杆，而不是只堆时间。你的下一步应该选择能放大收入的杠杆。"},
+  sideHustle:{name:"副业变现型",years:"7–15年",tag:"第二现金流是你的突破口",class:"sky",overview:"你已经具备副业或额外变现意识，这让你不完全依赖工资增长。但副业要真正改变财富速度，必须从偶尔赚钱升级为稳定系统：有定位、有获客、有复购、有利润表。",why:["你有额外赚钱尝试，说明变现意识较强","副业收入如果不稳定，暂时还不能作为财富模型主引擎","主业与副业之间需要协同，而不是互相消耗"],bottleneck:"最大短板：副业系统化不足。",strategy:["选择一个可重复交付的副业，而不是追热点","建立固定获客渠道，如内容、社群、转介绍或平台","把副业收入分成再投入、储蓄、长期投资三部分"],sevenDays:["写清楚你的副业服务对象和痛点","整理一个可售卖的最小产品或服务","联系5个潜在客户或发布一次内容","记录副业成本、收入和时间投入","设定下个月副业收入目标"],books:["《一人公司》：理解小规模高利润模式","《精益创业》：用小实验验证需求","《定位》：让别人知道你提供什么价值"],videos:["搜索：副业变现路径","搜索：个人IP从0到1","搜索：自由职业获客"],quote:"彼得·德鲁克强调成果来自外部客户，而不是内部努力。你的副业要从“我会什么”转向“谁愿意为什么付钱”。"},
+  investWeak:{name:"投资短板型",years:"10–20年",tag:"你有本金，但还没进入复利系统",class:"violet",overview:"你可能已经能赚钱、能存钱，但资产增值效率偏低。长期看，900万不仅靠收入堆出来，也需要让已有本金持续工作。你的重点不是追求高收益，而是建立稳定、可执行、低错误率的投资体系。",why:["储蓄能力存在，但投资参与度或持续性不足","收益率可能低于长期资产增长需要","没有资产配置时，容易在现金里错过复利时间"],bottleneck:"最大短板：复利系统缺失。",strategy:["先建立基础资产配置，再考虑提高收益","用定投降低择时压力","把风险控制写成规则，避免情绪交易"],sevenDays:["统计当前现金、基金、股票、债券比例","学习一种长期指数投资方案","设置每月固定投资金额","写下最大可承受回撤","删除一个会诱导频繁交易的信息源"],books:["《漫步华尔街》：理解长期市场收益","《聪明的投资者》：建立安全边际思维","《投资最重要的事》：理解风险"],videos:["搜索：资产配置入门","搜索：ETF定投教程","搜索：长期主义投资"],quote:"本杰明·格雷厄姆重视安全边际。对你来说，投资第一课不是赚快钱，而是建立不会轻易中断的体系。"},
+  highRisk:{name:"高风险冒进型",years:"3–20年，波动极大",tag:"上限高，但回撤也可能毁掉节奏",class:"orange",overview:"你可能偏好快速赚钱、激进投资或高不确定创业。这个路径确实可能更快接近900万，但失败概率和本金损失也更高。你的核心任务不是降低野心，而是给野心加上风控。",why:["你可能更愿意承受高波动或追求高收益","如果没有安全垫，单次失败会让财富进度倒退多年","高风险路径需要规则，不适合凭感觉冲刺"],bottleneck:"最大短板：风险边界不清晰。",strategy:["把生活费、应急金和高风险资金彻底隔离","设定单次项目最大亏损线","保留稳定现金流，不把全部人生押在一次机会里"],sevenDays:["写下当前所有高风险资产或项目","设定最大亏损比例","预留至少6个月生活费","复盘一次过去的错误决策","给每个高风险机会写退出条件"],books:["《反脆弱》：理解如何从波动中受益","《黑天鹅》：理解极端风险","《风险、不确定性与利润》：理解不确定性回报"],videos:["搜索：投资风险管理","搜索：创业失败复盘","搜索：仓位管理方法"],quote:"塔勒布提醒人们不要忽视小概率巨大损失。你的目标不是不冒险，而是确保一次失败不会出局。"},
+  latent:{name:"潜力未启动型",years:"12–25年，可大幅缩短",tag:"你缺的不是潜力，而是方向和启动",class:"teal",overview:"你可能还处在早期探索阶段，收入和资产暂时不突出，但学习力、年龄和可塑性仍然是优势。这个类型最怕长期停留在想法和焦虑里，最需要尽快选择一个高价值方向并做出可展示成果。",why:["当前资产和收入不是优势，但年龄给了你试错空间","执行可能有苗头，但还没有转化为明确收入","方向不清会让努力分散，导致成长速度变慢"],bottleneck:"最大短板：能力尚未稳定变现。",strategy:["先选赛道，再谈努力；优先选择收入天花板更高的技能","用90天做出一个作品、证书、案例或成交结果","主动进入更强的信息环境，减少独自摸索"],sevenDays:["列出3个你愿意投入一年的高收入技能","访谈2个已经靠该技能赚钱的人","选定一个90天目标","每天固定投入60分钟","发布第一个作品或学习记录"],books:["《刻意练习》：把努力变成技能","《远见》：理解职业不是一步到位","《优秀到不能被忽视》：用能力换自由"],videos:["搜索：20多岁如何选择方向","搜索：高价值技能学习路线","搜索：从0开始建立作品集"],quote:"卡尔·纽波特的观点是：热情往往来自能力积累之后。你不必先找到完美热爱，但要尽快开始积累可交换的能力。"}
+};
+
+const answers = {};
+const $ = id => document.getElementById(id);
+
+function renderQuestions(){
+  $("questionList").innerHTML = questions.map((q,i)=>`
+    <div class="card q">
+      <div class="num">${String(i+1).padStart(2,"0")}</div>
+      <h2>${q.title}</h2>
+      <p class="hint">${q.hint}</p>
+      <div class="options">
+        ${q.options.map(o=>`<button class="opt" data-q="${q.id}" data-label="${o.label}">${o.label}</button>`).join("")}
+      </div>
+    </div>`).join("");
+
+  document.querySelectorAll(".opt").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      const qid = btn.dataset.q;
+      answers[qid] = btn.dataset.label;
+      document.querySelectorAll(`.opt[data-q="${qid}"]`).forEach(b=>b.classList.remove("selected"));
+      btn.classList.add("selected");
+      updateProgress();
+    });
+  });
+}
+
+function getOption(qid){
+  const q = questions.find(x=>x.id===qid);
+  return q.options.find(o=>o.label===answers[qid]);
+}
+
+function getVal(qid){ return getOption(qid)?.value ?? 0; }
+
+function computeResult(){
+  const scores = {};
+  Object.keys(resultTypes).forEach(k=>scores[k]=0);
+  let totalValue = 0;
+
+  questions.forEach(q=>{
+    const selected = q.options.find(o=>o.label===answers[q.id]);
+    if(!selected) return;
+    totalValue += selected.value;
+    Object.entries(selected.scores || {}).forEach(([k,v])=>scores[k]+=v);
+  });
+
+  const income=getVal("income"), saving=getVal("saving"), debt=getVal("debt"), investing=getVal("investing"), side=getVal("side"), leapChance=getVal("leapChance");
+  if(debt<=1 && saving<=1) scores.repair += 5;
+  if(income>=3 && saving<=2) scores.highIncomeLowRetain += 6;
+  if(saving>=3 && investing<=1) scores.investWeak += 5;
+  if(side>=2) scores.sideHustle += 4;
+  if(leapChance>=2 && income>=2) scores.growth += 3;
+
+  const ranked = Object.entries(scores).sort((a,b)=>b[1]-a[1]);
+  const key = ranked[0]?.[0] || "latent";
+  const progress = Math.min(92, Math.max(18, Math.round((totalValue/36)*100)));
+  return {key,result:resultTypes[key],ranked,progress};
+}
+
+function updateProgress(){
+  const count = Object.keys(answers).length;
+  const pct = (count/questions.length)*100;
+  $("topBar").style.width = pct+"%";
+  $("bottomBar").style.width = pct+"%";
+  $("topCount").textContent = `已完成 ${count}/${questions.length}`;
+  $("bottomTitle").textContent = `已完成 ${count}/${questions.length}`;
+  $("mainBtn").disabled = count !== questions.length;
+}
+
+function list(id, arr, numbered=false){
+  $(id).innerHTML = arr.map((text,i)=>`<div class="item"><span class="dot">${numbered ? i+1 : "•"}</span><span>${text}</span></div>`).join("");
+}
+
+function showResult(){
+  const {result:r, ranked, progress} = computeResult();
+  $("quiz").classList.add("hide");
+  $("result").classList.remove("hide");
+  $("resultName").textContent = `你属于：${r.name}`;
+  $("overview").textContent = r.overview;
+  $("years").textContent = r.years;
+  $("score").textContent = `${progress}/100`;
+  $("scoreBar").style.width = progress+"%";
+  $("tag").textContent = r.tag;
+  $("tagCard").className = `result-card ${r.class}`;
+  $("secondary").textContent = "次要倾向：" + ranked.slice(1,3).map(([k])=>resultTypes[k].name).join("、");
+  $("bottleneck").textContent = r.bottleneck;
+  $("quote").textContent = r.quote;
+  list("why", r.why);
+  list("strategy", r.strategy);
+  list("sevenDays", r.sevenDays, true);
+  list("books", r.books);
+  list("videos", r.videos);
+  $("bottomTitle").textContent = "建议先执行7天行动计划";
+  $("mainBtn").textContent = "重测 ↻";
+  $("mainBtn").disabled = false;
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function reset(){
+  Object.keys(answers).forEach(k=>delete answers[k]);
+  document.querySelectorAll(".opt").forEach(b=>b.classList.remove("selected"));
+  $("result").classList.add("hide");
+  $("quiz").classList.remove("hide");
+  $("mainBtn").textContent = "看结果 →";
+  updateProgress();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function runSelfTests(){
+  const old = {...answers};
+  const fill = idxs => {
+    Object.keys(answers).forEach(k=>delete answers[k]);
+    questions.forEach((q,i)=>answers[q.id]=q.options[Math.min(idxs[i]??0,q.options.length-1)].label);
+    return computeResult().key;
+  };
+  if(!computeResult().result.name) throw new Error("self test failed: fallback");
+  if(fill([0,3,0,0,0,0,0,0,0,0,0,0]) !== "repair") throw new Error("self test failed: repair");
+  if(fill([3,0,4,1,1,1,0,1,1,1,0,1]) !== "highIncomeLowRetain") throw new Error("self test failed: highIncomeLowRetain");
+  Object.keys(answers).forEach(k=>delete answers[k]);
+  Object.assign(answers,old);
+}
+
+renderQuestions();
+updateProgress();
+runSelfTests();
+
+$("mainBtn").addEventListener("click",()=>{
+  if($("result").classList.contains("hide")){
+    if(Object.keys(answers).length === questions.length) showResult();
+  }else{
+    reset();
+  }
+});
+</script>
+</body>
+</html>
